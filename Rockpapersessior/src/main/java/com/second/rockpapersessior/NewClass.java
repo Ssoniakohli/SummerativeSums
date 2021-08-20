@@ -1,75 +1,106 @@
 package com.second.rockpapersessior;
-import java.util.Random;        
+
+import java.util.Random;
 import java.util.Scanner;
 
-public class NewClass {
+
+        public class NewClass {
     public static void main(String[] args) {
        Scanner inputReader = new Scanner(System.in);
-        int numberofrounds = 0;
-        int wins = 0; 
-        int losses = 0;
-        for(int i = 0; i<10; i++)
-        while( numberofrounds<10 && numberofrounds>=1) {
-     //verify if number of rounds are valid
-        System.out.println("Ask the numberofrounds she wants to play");
-        inputReader.nextLine();
-        numberofrounds++;
-         
-         //(!number of rounds<10&& !number of rounds>)
-         System.out.println("If user entered invalid number of rounds,print(exit)");
-         inputReader.nextLine();
-         
-        //Get the user input
-             System.out.println("Enter your move. Type in rock, paper or scissors: ");
-             String mymove = inputReader.nextLine();
-             //Randomly generate cmove(1, 2, 3)
-             Random number= new Random ();
-             int rand = number.nextInt(3)+1;
-             String cmove = "";
-             switch (rand) {
-        case 1:
-        cmove = "Rock";
-        break;
-        case 2:
-        cmove = "Paper";
-        break;
-        default:
-        cmove = "Scissors";
-    }
-             System.out.println("cmove: + cmove");
-             System.out.println("mymove: + mymove");
-             
-             if( mymove.equals(cmove)) {
-                 System.out.println("you tied!");
-             }else if ((mymove.equals("rock") &&cmove.equals("Scissors")) || (mymove.equals
-        ("Scissors") && cmove.equals("Paper"))||
-                     (mymove.equals("Paper") && cmove.equals("Rock"))) {
-                     System.out.println("ypu won!");
-                     wins++;
-             }else {
-                 System.out.println("you lost!");
-                 
-             }
-             //check if I won more games than I lose or computer won more games than I won
-             
-             if (wins>losses) {
-                 System.out.println("I won more games than I lose! :)");
-             }else if (wins<losses) {
-                 System.out.println("I lost more games than I won! :");
-             }else 
-                 System.out.println("I won and list an equal number of games!:|");
-                 System.out.println("Ask the user if she wants to play again? (y/n");
-                 String playagain = inputReader.nextLine();
-                 if (playagain.equals("y")) {
-                     System.out.println("start over");
-                     inputReader.nextLine();
-                 }
-                 if (playagain.equals("n"));
-                 System.out.println("Thanks for playing!:  "+"exit" );
-               
+        int rounds = 10;
+        int Rock = 1; 
+        int Paper = 2;
+        int Scissors = 3;
+        int choice;
+        int tiecount=0;
+        int usercount=0;
+        int compcount=0;
+        int a=0;
+        int b=0;
+        int c=0;
+        String y="yes";
+        String n="no";
+        String askuser;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("How many rounds do you want to play");
+        
+        {
+            if(rounds>10)
+            {
+                System.out.println("you input a wrong value, out of range");
             }
+            else
+                
+            for(int i = 1; i<rounds; i++)
+            {
+                
+                
+                Random ran= new Random (3);
+                //user input
+            System.out.println("please make your choice:");
+            choice=Integer.parseInt(sc.nextLine());
+            
+            
+            //computer input
+            
+                
+             int compchoice =ran.nextInt(3)+1;
+            System.out.println("computerchoice:" + compchoice);
+            //comparison between user input and computer input
+            if (choice==compchoice)
+                
+            {
+                System.out.println("Tie");
+                tiecount++;
+                a=tiecount;
+                
+            }
+            
+            else if(choice>compchoice)
+            {
+                System.out.println("User wins");
+                
+                 usercount++;
+               b=usercount;
+                        
+             }
+                else
+             {
+                        
+            System.out.println("computer wins");
+            compcount++;
+            c=compcount;
+            
+          }
+                
+          // printing total number of ties, userwins. computer wins
+                System.out.println("Total number of ties:"+ a);
+                System.out.println("Total number of userwins:+ b");
+                System.out.println("Total number of computerwins:+ c");
+            }
+            //to find overall winner
+           if (b>c)
+                System.out.println("Overall user is the wins");
+           else if (c>b)
+                System.out.println("Overall computer is the winner");
+           else
+                System.out.println("there is a tie between them");
+           
+             //ask user if she wants to play again
+                     System.out.println("Do you want to play again");
+               askuser=sc.nextLine();
+               if (askuser.equals(n))
+                System.out.println("Thanks for playing" );
+        
+                 System.out.println("how many rounds do you want to play");
         }
- }                
+                 inputReader.nextLine();
+        }
+
+    }           
+            
+           
+                      
     
              
         
